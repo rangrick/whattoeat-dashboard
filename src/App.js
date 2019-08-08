@@ -1,8 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import logo from "./logo.svg"
+import "./App.css"
+
+import getPlaceByText from "./service/googleplaces"
 
 function App() {
+  console.log(
+    getPlaceByText("Jena restaurant").then(res =>
+      console.log(res).catch(error => console.log(error))
+    )
+  )
   return (
     <div className="App">
       <header className="App-header">
@@ -20,7 +27,7 @@ function App() {
         </a>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
