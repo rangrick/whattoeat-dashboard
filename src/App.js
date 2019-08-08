@@ -1,33 +1,24 @@
-import React from "react"
-import logo from "./logo.svg"
+import React, { useEffect } from "react"
 import "./App.css"
 
-import getPlaceByText from "./service/googleplaces"
+function makeid() {
+  var result = ""
+  var characters =
+    "🍇🍈🍉🍊🍋🍌🍍🥭🍎🍏🍐🍑🍒🍓🥝🍅🥥🥑🍆🥔🥕🌽🌶🥒🥬🥦🍄🥜🌰🍞🥐🥖🥨🥯🥞🧀🍖🍗🥩🥓🍔🍟🍕🌭🥪🌮🌯🥙🍳🥘🍲🥣🥗🍿🧂🥫🍱🍘🍙🍚🍛🍜🍝🍠🍢🍣🍤🍥🥮🍡🥟🥠🥡🍦🍧🍨🍩🍪🎂🍰🧁🥧🍫🍬🍭🍮🍯🍼🥛☕🍵🍶🍾🍷🍸🍹🍺🍻🥂🥃🥤🥢🍽🍴🥄"
+  var charactersLength = characters.length
+  for (var i = 0; i < charactersLength; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength))
+  }
+  return result
+}
+
+console.log(makeid(5))
 
 function App() {
-  console.log(
-    getPlaceByText("Jena restaurant").then(res =>
-      console.log(res).catch(error => console.log(error))
-    )
-  )
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  )
+  useEffect(() => {
+    document.title = makeid()
+  })
+  return <div className="App">Test</div>
 }
 
 export default App
