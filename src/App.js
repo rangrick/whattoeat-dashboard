@@ -1,6 +1,8 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import "./App.css"
 
+import Charts from "./compoenents/charts"
+import List from "./compoenents/list"
 function makeid() {
   var result = ""
   var characters =
@@ -12,13 +14,24 @@ function makeid() {
   return result
 }
 
-console.log(makeid(5))
-
 function App() {
+  const [data, setData] = useState(false)
+
   useEffect(() => {
+    fetch("places")
+      .then(response => response.json())
+      .then(data => setData(data))
+
     document.title = makeid()
-  })
-  return <div className="App">Test</div>
+  }, [])
+
+  console.log(data)
+  return (
+    <div className="App">
+      <List data={data.results} />
+      <Charts />
+    </div>
+  )
 }
 
 export default App
