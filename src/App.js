@@ -3,33 +3,36 @@ import "./App.css"
 
 import Charts from "./compoenents/charts"
 import List from "./compoenents/list"
-function makeid() {
-  var result = ""
-  var characters =
-    "🍇🍈🍉🍊🍋🍌🍍🥭🍎🍏🍐🍑🍒🍓🥝🍅🥥🥑🍆🥔🥕🌽🌶🥒🥬🥦🍄🥜🌰🍞🥐🥖🥨🥯🥞🧀🍖🍗🥩🥓🍔🍟🍕🌭🥪🌮🌯🥙🍳🥘🍲🥣🥗🍿🧂🥫🍱🍘🍙🍚🍛🍜🍝🍠🍢🍣🍤🍥🥮🍡🥟🥠🥡🍦🍧🍨🍩🍪🎂🍰🧁🥧🍫🍬🍭🍮🍯🍼🥛☕🍵🍶🍾🍷🍸🍹🍺🍻🥂🥃🥤🥢🍽🍴🥄"
-  var charactersLength = characters.length
-  for (var i = 0; i < charactersLength; i++) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength))
-  }
-  return result
-}
+import Search from "./compoenents/search"
 
 function App() {
   const [data, setData] = useState(false)
-
-  useEffect(() => {
-    fetch("places")
+  const fetchData = ({ token, search }) => {
+    fetch(
+      `places?search=${search}` + (token ? `&next_page_token=${token}` : "")
+    )
       .then(response => response.json())
-      .then(data => setData(data))
+      .then(newData => {
+        setData(newData)
 
-    document.title = makeid()
+        if (newData.next_page_token) {
+          // fetchData(newData.next_page_token)
+        }
+      })
+  }
+  useEffect(() => {
+    fetchData({ search: "Jena restaurant" })
   }, [])
 
-  console.log(data)
+  const dispatchSearch = search => {
+    fetchData({ search })
+  }
+
   return (
     <div className="App">
-      <List data={data.results} />
-      <Charts />
+      <Search dispatchSearch={dispatchSearch} />
+
+      <Charts data={data.results} />
     </div>
   )
 }
