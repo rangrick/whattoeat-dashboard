@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from "react"
 import "./App.css"
 
-import Charts from "./compoenents/charts"
+import Charts from "./components/charts"
+import Randomize from "./components/randomize"
 
 function App() {
   const [data, setData] = useState(false)
-  const fetchData = ({ search }) => {
+  const fetchData = () => {
     fetch("placesCached")
       .then(response => response.json())
       .then(newData => {
-        console.log(newData)
         setData(newData)
       })
   }
   useEffect(() => {
-    fetchData({ search: "Jena restaurant" })
+    fetchData()
   }, [])
 
   return (
     <div className="App">
-      <Randomize />
-      <Charts data={data} />
+      <Randomize data={data} />
+      {/* <Charts data={data} /> */}
     </div>
   )
 }
