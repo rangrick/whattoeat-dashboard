@@ -6,15 +6,34 @@
     <link
       rel="stylesheet"
       href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
-      integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47"
+      integrity="sha384-"
       crossorigin="anonymous"
     />
+
+    <!--[if lte IE 8]>
+      <link
+        rel="stylesheet"
+        href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-old-ie-min.css"
+      />
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
     <link
       rel="stylesheet"
-      href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
-      integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47"
-      crossorigin="anonymous"
+      href="https://unpkg.com/purecss@1.0.1/build/grids-responsive-min.css"
     />
+    <!--<![endif]-->
+
+    <link
+      rel="stylesheet"
+      href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"
+    />
+
+    <!--[if lte IE 8]>
+      <link rel="stylesheet" href="css/layouts/marketing-old-ie.css" />
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+    <link rel="stylesheet" href="css/layouts/marketing.css" />
+    <!--<![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <!--
@@ -31,10 +50,27 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Restraurant dashboard</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div class="header">
+      <div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+        <a class="pure-menu-heading" href="">Restraurant dashboard</a>
+
+        <ul class="pure-menu-list">
+          <li class="pure-menu-item pure-menu-selected">
+            <a href="#" class="pure-menu-link">Home</a>
+          </li>
+          <li class="pure-menu-item">
+            <a href="#" class="pure-menu-link">Tour</a>
+          </li>
+          <li class="pure-menu-item">
+            <a href="#" class="pure-menu-link">Sign Up</a>
+          </li>
+        </ul>
+      </div>
+    </div>
     <div id="root"></div>
     <!--
       This HTML file is a template.

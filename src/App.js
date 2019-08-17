@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, Fragment } from "react"
 import "./App.css"
 
 import Charts from "./components/charts"
 import Randomize from "./components/randomize"
+import Search from "./components/search"
 
 function App() {
   const [data, setData] = useState(false)
@@ -18,10 +19,13 @@ function App() {
   }, [])
 
   return (
-    <div className="App">
+    <Fragment>
       <Randomize data={data} />
-      {/* <Charts data={data} /> */}
-    </div>
+      <div className="content-wrapper">
+        <Charts data={data} />
+        <Search />
+      </div>
+    </Fragment>
   )
 }
 
